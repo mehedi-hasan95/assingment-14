@@ -1,4 +1,30 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+
 export default function Home() {
+    const router = useRouter();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        const data = { email, password };
+
+        const response = await fetch("/api/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        });
+        const json = await response.json();
+        if (json["status"] === true) {
+            router.replace("/blog");
+        } else {
+            alert(json["message"]);
+        }
+    };
     return (
         <div className="flex items-center h-[90vh]">
             <div className="flex mx-auto flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-900 text-gray-100">
@@ -8,10 +34,13 @@ export default function Home() {
                         Sign in to access your account
                     </p>
                 </div>
-                <form novalidate="" action="" className="space-y-12">
+                <form onSubmit={handleSubmit} className="space-y-12">
                     <div className="space-y-4">
                         <div>
-                            <label for="email" className="block mb-2 text-sm">
+                            <label
+                                htmlFor="email"
+                                className="block mb-2 text-sm"
+                            >
                                 Email address
                             </label>
                             <input
@@ -25,7 +54,7 @@ export default function Home() {
                         </div>
                         <div>
                             <div className="flex justify-between mb-2">
-                                <label for="password" className="text-sm">
+                                <label htmlFor="password" className="text-sm">
                                     Password
                                 </label>
                                 <a
