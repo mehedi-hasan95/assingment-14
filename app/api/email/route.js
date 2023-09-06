@@ -4,6 +4,9 @@ export async function GET(req, res) {
     const { searchParams } = new URL(req.url);
     let ToEmail = searchParams.get("email");
 
+    // Set verification code
+    const verificationNumber = Math.floor(100000 + Math.random() * 900000);
+    // Set the sender mail information
     let Transporter = nodemailer.createTransport({
         host: "mail.teamrabbil.com",
         port: 25,
@@ -14,12 +17,14 @@ export async function GET(req, res) {
         },
         tls: { rejectUnauthorized: false },
     });
+    // The message body
     let myEmail = {
-        form: "From test <info@teamrabbil.com>",
+        form: "From  <info@teamrabbil.com>",
         to: ToEmail,
         subject: "This is subject",
-        text: "This is body",
+        text: `The verification code is ${verificationNumber}`,
     };
+    // The Mail behavior
     try {
         const result = await Transporter.sendMail(myEmail);
         return NextResponse.json({ msg: result });
