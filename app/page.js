@@ -1,9 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
     const router = useRouter();
+    // Login functionality
     const handleSubmit = async (e) => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -11,6 +13,7 @@ export default function Home() {
 
         const data = { email, password };
 
+        // Implement the login api
         const response = await fetch("/api/login", {
             method: "POST",
             headers: {
@@ -57,13 +60,6 @@ export default function Home() {
                                 <label htmlFor="password" className="text-sm">
                                     Password
                                 </label>
-                                <a
-                                    rel="noopener noreferrer"
-                                    href="#"
-                                    className="text-xs hover:underline text-gray-400"
-                                >
-                                    Forgot password?
-                                </a>
                             </div>
                             <input
                                 defaultValue="123"
@@ -85,13 +81,13 @@ export default function Home() {
                         </div>
                         <p className="px-6 text-sm text-center text-gray-400">
                             Don&apos;t have an account yet?
-                            <a
+                            <Link
                                 rel="noopener noreferrer"
-                                href="#"
+                                href="/register"
                                 className="hover:underline text-violet-400"
                             >
                                 Sign up
-                            </a>
+                            </Link>
                             .
                         </p>
                     </div>

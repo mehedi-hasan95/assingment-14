@@ -1,0 +1,5 @@
+This app has a total of 3 pages. Home as login page, Blog page and Register page.
+### The Home is also the login page. When the user tries to log in using the username "me@me.com" and password "123" a cookie is set. Without cookies or without successfully login the user can't access the blog page.
+### User can register. When they provide their email address a verification code is sent to the user's email
+
+Users can't log in without a valid token and the token's validity is for 2 hours.

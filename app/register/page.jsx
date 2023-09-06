@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 
 const Register = () => {
     const router = useRouter();
+    // Registration functionality
     const handelRegister = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -13,10 +14,8 @@ const Register = () => {
         <div className="flex h-[90vh] items-center">
             <div className="flex mx-auto flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-900 text-gray-100">
                 <div className="mb-8 text-center">
-                    <h1 className="my-3 text-4xl font-bold">Sign in</h1>
-                    <p className="text-sm text-gray-400">
-                        Sign in to access your account
-                    </p>
+                    <h1 className="my-3 text-4xl font-bold">Register</h1>
+                    <p className="text-sm text-gray-400">Create your Account</p>
                 </div>
                 <form onSubmit={handelRegister} className="space-y-12">
                     <div className="space-y-4">
@@ -37,13 +36,6 @@ const Register = () => {
                                 <label for="password" className="text-sm">
                                     Password
                                 </label>
-                                <a
-                                    rel="noopener noreferrer"
-                                    href="#"
-                                    className="text-xs hover:underline text-gray-400"
-                                >
-                                    Forgot password?
-                                </a>
                             </div>
                             <input
                                 type="password"

@@ -1,5 +1,6 @@
 import { SignJWT, jwtVerify } from "jose";
 
+// Set the functionality of create a token and its features
 export async function CreateToken(email) {
     const secret = new TextEncoder().encode(process.env.JWT_TOKEN);
     const token = await new SignJWT({ email })
@@ -11,6 +12,7 @@ export async function CreateToken(email) {
     return token;
 }
 
+// Decoded the created token
 export async function VerifyToken(token) {
     const secret = new TextEncoder().encode(process.env.JWT_TOKEN);
     const verifyJwtToken = await jwtVerify(token, secret);

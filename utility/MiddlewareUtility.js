@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { VerifyToken } from "@/utility/JwtHelper";
 
+// Set headers for a valid user
 export async function CheckCookieAuth(req) {
     try {
         const token = req.cookies.get("token");
