@@ -23,6 +23,7 @@ export default function Home() {
         });
         const json = await response.json();
         if (json["status"] === true) {
+            router.refresh();
             router.replace("/blog");
         } else {
             alert(json["message"]);
