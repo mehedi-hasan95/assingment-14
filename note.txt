@@ -3,3 +3,5 @@ This app has a total of 3 pages. Home as login page, Blog page and Register page
 ### User can register. When they provide their email address a verification code is sent to the user's email
 
 Users can't log in without a valid token and the token's validity is for 2 hours.
+
+Live link: https://assingment-14-two.vercel.app/
